@@ -1,35 +1,31 @@
+const dialogflow = require("@google-cloud/dialogflow");
 const intentsClient = new dialogflow.IntentsClient();
 
-async function listIntents() {
-  // Construct request
+module.exports = {
+  listar_intent: async function (projectId) {
+    // La ruta para identificar al agente propietario de los intents.
+    const projectAgentPath = intentsClient.agentPath(projectId);
+    const request = {
+      parent: projectAgentPath,
+    };
 
-  // The path to identify the agent that owns the intents.
-  const projectAgentPath = intentsClient.agentPath(ChatbotId);
-
-  console.log(projectAgentPath);
-
-  const request = {
-    parent: projectAgentPath,
-  };
-
-  // Send the request for listing intents.
-  const [response] = await intentsClient.listIntents(request);
-  response.forEach(intent => {
-    console.log('====================');
-    console.log(`Intent name: ${intent.name}`);
-    console.log(`Intent display name: ${intent.displayName}`);
-    console.log(`Respuestas: ${intent.messages[0].text.text}`);
-
-    console.log('Input contexts:');
-    intent.inputContextNames.forEach(inputContextName => {
-      console.log(`\tName: ${inputContextName}`);
-    });
-
-    console.log('Output contexts:');
-    intent.outputContexts.forEach(outputContext => {
-      console.log(`\tName: ${outputContext.name}`);
-    });
-  });
+    // Enviar la solicitud para listar las intenciones.
+    return intentsClient.listIntents(request);
+    // response.forEach(intent => {
+    //   console.log('====================');
+    //   console.log(`Intent name: ${intent.name}`);
+    //   console.log(`Intent display name: ${intent.displayName}`);
+    //   console.log(`Respuestas: ${intent.messages[0].text.text}`);
+    //
+    //   console.log('Input contexts:');
+    //   intent.inputContextNames.forEach(inputContextName => {
+    //     console.log(`\tName: ${inputContextName}`);
+    //   });//Fin forEach
+    //
+    //   console.log('Output contexts:');
+    //   intent.outputContexts.forEach(outputContext => {
+    //     console.log(`\tName: ${outputContext.name}`);
+    //   });//Fin forEach
+    // });//Fin forEach
+  }
 }
-
-listIntents();
