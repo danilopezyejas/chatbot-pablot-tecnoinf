@@ -12,9 +12,8 @@ router.get('/', (req,res)=>{
   res.send("ERROR")
 })
 
-router.get('/send-msg', (req,res)=>{
-  // consultar_intent.buscar_intent(ChatbotId, req.body.MSG)
-  consultar_intent.buscar_intent(ChatbotId, req.query.nombre)
+router.post('/send-msg', (req,res)=>{
+  consultar_intent.buscar_intent(ChatbotId, req.body.MSG)
     .then((results) => {
       res.send({Reply: results})
     }) //End of .then(results =>
@@ -33,8 +32,8 @@ router.get('/listar-intent', (req,res)=>{
     }); // End of .catch
 })
 
-router.get('/nuevo-intent', (req,res)=>{
-  crear_intent.crear_intent(ChatbotId,req.query.respuesta,req.query.pregunta,req.query.nombreIntent )
+router.post('/nuevo-intent', (req,res)=>{
+  crear_intent.crear_intent(ChatbotId,req.body.respuesta,req.body.pregunta,req.body.nombreIntent )
     .then((results) => {
       res.send({Reply: results})
     }) //End of .then(results =>

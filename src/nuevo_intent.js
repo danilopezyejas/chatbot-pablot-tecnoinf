@@ -7,18 +7,21 @@ module.exports = {
     // La ruta para identificar al agente que posee la intención creada.
     const agentPath = intentsClient.agentPath(projectId);
     const trainingPhrases = [];
+    preguntas = [preguntas];
+    respuesta = [respuesta];
     // console.log(preguntas);
-    // preguntas.forEach(pregunta => {
-    //   const part = {
-    //     text: pregunta,
-    //   };
+    preguntas.forEach(pregunta => {
+      const part = {
+        text: pregunta,
+      };
+
       // Aquí creamos una nueva frase de entrenamiento para cada parte proporcionada.
       const trainingPhrase = {
-        type: 'EXAMPLE',
-        parts: [preguntas],
+        type: '',
+        parts: [part],
       };
       trainingPhrases.push(trainingPhrase);
-    // });
+    });
     const messageText = {
       text: respuesta,
     };
