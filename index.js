@@ -7,7 +7,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const route = require('./routes/route');
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 const ChatbotId = "chatbot-pablot-290222";
 
