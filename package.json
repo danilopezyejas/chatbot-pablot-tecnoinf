@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nose index.js",
+    "start": "node index.js",
     "prod": "nodemon index.js"
   },
   "author": "",
