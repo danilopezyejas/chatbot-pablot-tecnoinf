@@ -29,9 +29,9 @@ router.post('/', (req,res)=>{
     case "Materias primer semestre":
       if (req.body.queryResult.intent.name.includes("3e6c0259-37f6-47e9-a99e-4499d9c31dbf")
           && req.body.queryResult.queryText.includes("segundo")) {
-        // res.json({
-        //     "fulfillmentText": "Otro semestre"
-        // });    //Esto tiene que devolver Diego
+        res.json({
+            "fulfillmentText": "Otro semestre"
+        });    //Esto tiene que devolver Diego
         // res.redirect('http://google.com'); //redireccionar a la aplicacion de Diego
       }
       break;
