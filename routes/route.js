@@ -33,6 +33,18 @@ router.post('/', (req,res)=>{
             "fulfillmentText": "Otro semestre"
         });    //Esto tiene que devolver Diego
         // res.redirect('http://google.com'); //redireccionar a la aplicacion de Diego
+      }else {
+        res.json({
+            "fulfillmentText": "",
+            "fulfillmentMessages": [
+              {
+                "text": {
+                  "text": ""
+                }
+              }
+            ],
+            "source": "<webhookpn1>"
+        });
       }
       break;
     default:
