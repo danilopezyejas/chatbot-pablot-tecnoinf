@@ -1,6 +1,5 @@
 const dialogflow = require("dialogflow");
 const uuid = require("uuid");
-const sessionId = uuid.v4();
 
 module.exports = {
   buscar_intent: async function (projectId, msg) {
