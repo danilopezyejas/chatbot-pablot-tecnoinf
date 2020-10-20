@@ -1,5 +1,4 @@
-// require('dotenv').config();
-// const ngrok = require('ngrok');
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const route = require('./routes/route');

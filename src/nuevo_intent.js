@@ -17,7 +17,7 @@ module.exports = {
 
       // Aquí creamos una nueva frase de entrenamiento para cada parte proporcionada.
       const trainingPhrase = {
-        type: '',
+        type: 'EXAMPLE',
         parts: [part],
       };
       trainingPhrases.push(trainingPhrase);
@@ -32,6 +32,7 @@ module.exports = {
       displayName: nombreIntent,
       trainingPhrases: trainingPhrases,
       messages: [message],
+      webhookState: 'WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING',
     };
     const createIntentRequest = {
       parent: agentPath,
