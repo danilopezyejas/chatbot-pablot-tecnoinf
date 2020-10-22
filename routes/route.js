@@ -60,6 +60,7 @@ router.post('/contexto', (req,res)=>{
 
 router.post('/send-msg', (req,res)=>{
   usuarioPregunton = req.body.id;
+  console.log("pregunta");
   consultar_intent.buscar_intent(ChatbotId, req.body.MSG)
     .then((results) => {
       res.send({Reply: results})
