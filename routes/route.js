@@ -4,24 +4,27 @@ const router = express.Router();
 const consultar_intent = require('../src/consultar_intent');
 const listar_intent = require('../src/listar_intent');
 const crear_intent = require('../src/nuevo_intent');
-
+const fetch = require('node-fetch');
 const ChatbotId = "chatbot-pablot-290222";
-const ServidorDiego = 'localhost:8080/';
+const ServidorDiego = 'http://localhost:8080/';
 
 let usuarioPregunton = 0;
-
+let respuesta = ""; 
 router.get('/', (req,res)=>{
   console.log("ERROR GET");
   res.send("ERROR GET");
 });
-
+router.post('/ultima', (req,res)=>{
+  res.send({Reply: this.respuesta})
+});
 //Atiendo los intent que funcionan con webhook
 router.post('/contexto', (req,res)=>{
   let acction = req.body.queryResult.intent.displayName;
   console.log(acction);
   //Solo se respondera este tipo de preguntas a usuarios logeados
-  if (usuarioPregunton === 0) {
-    res.status(403).send('Debe iniciar sesion para responder esta pregunta');
+  if (usuarioPregunton == "0") {
+    this.respuesta = 'Debe iniciar sesion para responder esta pregunta';
+   // res.status(403).send('Debe iniciar sesion para responder esta pregunta');
   }else {
     switch (acction) {
       case "suma":
@@ -45,7 +48,14 @@ router.post('/contexto', (req,res)=>{
         res.redirect(ServidorDiego + 'preguntas/FAQcal1'); //redireccionar a la aplicacion de Diego
         break;
       case "Creditos restantes":
-        res.redirect(ServidorDiego + 'preguntas/FAQcal2'); //redireccionar a la aplicacion de Diego
+        const body = { id: usuarioPregunton };
+        fetch(ServidorDiego + 'preguntas/FAQcal2',{ method: 'POST', body: JSON.stringify(body),headers: { 'Content-Type': 'application/json' } })
+      .then(res => res.json()) // expecting a json response
+      .then(json => 
+        this.respuesta = json.Reply 
+        );
+
+       // res.redirect(ServidorDiego + 'preguntas/FAQcal2/'+usuarioPregunton); //redireccionar a la aplicacion de Diego
         break;
       case "Pasantia":
         res.redirect(ServidorDiego + 'preguntas/FAQcal3'); //redireccionar a la aplicacion de Diego
@@ -59,6 +69,7 @@ router.post('/contexto', (req,res)=>{
 });
 
 router.post('/send-msg', (req,res)=>{
+  
   usuarioPregunton = req.body.id;
   consultar_intent.buscar_intent(ChatbotId, req.body.MSG)
     .then((results) => {
