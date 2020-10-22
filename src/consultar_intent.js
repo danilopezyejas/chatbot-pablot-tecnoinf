@@ -1,9 +1,9 @@
 const dialogflow = require("dialogflow");
 const uuid = require("uuid");
-const sessionId = uuid.v4();
 
 module.exports = {
   buscar_intent: async function (projectId, msg) {
+    const sessionId = uuid.v4();
   // Create a new session
     const sessionClient = new dialogflow.SessionsClient();
     const sessionPath = sessionClient.sessionPath(projectId, sessionId);
