@@ -4,8 +4,7 @@ const uuid = require("uuid");
 module.exports = {
   buscar_intent: async function (projectId, msg) {
     const sessionId = uuid.v4();
-    // const sessionClient = new dialogflow.SessionsClient({ keyFilename: "relative/path/to/key.json" });
-  // Create a new session
+    // Create a new session
     const sessionClient = new dialogflow.SessionsClient();
     const sessionPath = sessionClient.sessionPath(projectId, sessionId);
     // La solicitud de consulta de texto.
