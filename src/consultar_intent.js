@@ -5,7 +5,10 @@ module.exports = {
   buscar_intent: async function (projectId, msg) {
     const sessionId = uuid.v4();
     // Create a new session
-    const sessionClient = new dialogflow.SessionsClient();
+    const sessionClient = new dialogflow.SessionsClient({
+   keyFilename: require("path").join('google-credentials.json')
+  });
+    // const sessionClient = new dialogflow.SessionsClient();
     const sessionPath = sessionClient.sessionPath(projectId, sessionId);
     // La solicitud de consulta de texto.
     const request = {
