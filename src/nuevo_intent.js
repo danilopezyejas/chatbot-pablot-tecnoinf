@@ -35,8 +35,9 @@ module.exports = {
       displayName: nombreIntent,
       trainingPhrases: trainingPhrases,
       messages: [message],
-      webhookState: 'WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING',
     };
+
+    // webhookState: 'WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING',
     const createIntentRequest = {
       parent: agentPath,
       intent: intent,
