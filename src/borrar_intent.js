@@ -1,10 +1,14 @@
 'use strict';
 
 const dialogflow = require('@google-cloud/dialogflow');
-const intentsClient = new dialogflow.IntentsClient();
+// const intentsClient = new dialogflow.IntentsClient();
 
 module.exports = {
   borrar_intent: async function (projectId, intentId) {
+
+    const intentsClient = new dialogflow.IntentsClient({
+   keyFilename: require("path").join('google-credentials.json')
+  });
 
     const intentPath = intentsClient.intentPath(projectId, intentId);
 
@@ -14,6 +18,6 @@ module.exports = {
     const result = await intentsClient.deleteIntent(request);
     console.log(`Intent ${intentPath} deleted`);
     return result;
-    
+
   }// [END dialogflow_delete_intent]
 }//Fin exports
