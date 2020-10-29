@@ -1,9 +1,12 @@
 'use strict';
 const dialogflow = require("@google-cloud/dialogflow");
-const intentsClient = new dialogflow.IntentsClient();
 
 module.exports = {
   crear_intent: async function (projectId, respuesta, preguntas, nombreIntent) {
+    const intentsClient = new dialogflow.IntentsClient({
+   keyFilename: require("path").join('google-credentials.json')
+  });
+
     // La ruta para identificar al agente que posee la intención creada.
     const agentPath = intentsClient.agentPath(projectId);
     const trainingPhrases = [];
