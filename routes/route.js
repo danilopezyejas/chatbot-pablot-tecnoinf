@@ -4,6 +4,7 @@ const router = express.Router();
 const consultar_intent = require('../src/consultar_intent');
 const listar_intent = require('../src/listar_intent');
 const crear_intent = require('../src/nuevo_intent');
+const borrar_intent = require('../src/borrar_intent');
 const fetch = require('node-fetch');
 const ChatbotId = "chatbot-pablot-290222";
 const ServidorDiego = 'http://localhost:8080/';
@@ -109,6 +110,17 @@ router.get('/listar-intent', (req,res)=>{
 
 router.post('/nuevo-intent', (req,res)=>{
   crear_intent.crear_intent(ChatbotId,req.body.respuesta,req.body.pregunta,req.body.nombreIntent )
+    .then((results) => {
+      res.send({Reply: results})
+    }) //End of .then(results =>
+    .catch((err) => {
+      res.status(500).send('A ocurido un error! Con el servidor');
+      console.error("ERROR:", err);
+    }); // End of .catch
+})
+
+router.post('/borrar-intent', (req,res)=>{
+  borrar_intent.borrar_intent(ChatbotId, req.body.idIntent )
     .then((results) => {
       res.send({Reply: results})
     }) //End of .then(results =>
