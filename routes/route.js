@@ -34,7 +34,11 @@ router.post('/contexto', (req,res)=>{
     this.respuesta = 'Debe iniciar sesion para responder esta pregunta';
   }else {
     switch (acction) {
-    
+      case "Wiki RPyL":
+        let ingreso = req.body.queryResult.queryText;
+        console.log(ingreso);
+        this.respuesta = ingreso;
+      break;
       case "Materias primer semestre":
       //Si el usuario quere saber a que materias se puede anotar de un semestre distindo al primero
       //se calcula que materias tiene aprobadas y se le responde
