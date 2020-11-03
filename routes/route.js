@@ -7,7 +7,7 @@ const crear_intent = require('../src/nuevo_intent');
 const borrar_intent = require('../src/borrar_intent');
 const fetch = require('node-fetch');
 const ChatbotId = "chatbot-pablot-290222";
-const ServidorDiego = 'https://3e64e7c9f20c.ngrok.io/';
+const ServidorDiego = 'http://3e64e7c9f20c.ngrok.io/';
 
 let usuarioPregunton = 0;
 let respuesta = "";
@@ -53,7 +53,7 @@ router.post('/contexto', (req,res)=>{
       case "Cantidad de creditos":
         fetch(ServidorDiego + 'preguntas/FAQcal1',{
                 method: 'POST',
-                body: body,
+                body: {id:usuarioPregunton},
                 headers: { 'Content-Type': 'application/json' }
         })
           .then(res => res.json()) // expecting a json response
