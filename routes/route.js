@@ -53,7 +53,7 @@ router.post('/contexto', (req,res)=>{
       case "Cantidad de creditos":
         fetch(ServidorDiego + 'preguntas/FAQcal1',{
                 method: 'POST',
-                body: {id:usuarioPregunton},
+                body: JSON.stringify({id:usuarioPregunton}),
                 headers: { 'Content-Type': 'application/json' }
         })
           .then(res => res.json()) // expecting a json response
