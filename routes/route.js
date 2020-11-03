@@ -36,6 +36,7 @@ router.post('/contexto', (req,res)=>{
     switch (acction) {
       case "Wiki RPyL":
         let ingreso = req.body.queryResult.queryText;
+        console.log(ingreso);
         this.respuesta = ingreso;
       break;
       case "Materias primer semestre":
