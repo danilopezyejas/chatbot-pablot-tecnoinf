@@ -17,10 +17,10 @@ router.get('/', (req,res)=>{
   res.send("ERROR GET");
 });
 router.post('/ultima', (req,res)=>{
-  if(this.respuesta == 'Debe iniciar sesion para responder esta pregunta')
+ /* if(this.respuesta == 'Debe iniciar sesion para responder esta pregunta')
     res.status(403).send('Debe iniciar sesion para responder esta pregunta');
   if(this.respuesta == 'A ocurido un error! No se encontro lo solicitado')
-    res.status(404).send('A ocurido un error! No se encontro lo solicitado');
+    res.status(404).send('A ocurido un error! No se encontro lo solicitado');*/
   res.send({Reply: this.respuesta})
 });
 //Atiendo los intent que funcionan con webhook
