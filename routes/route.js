@@ -36,7 +36,7 @@ router.post('/contexto', (req,res)=>{
     switch (acction) {
       case "Wiki RPyL":
         let wikiapi = "http://wiki-rpl-tipy.jesusguibert.com/mediawiki/api.php?action=query&list=search&srwhat=text&format=json&srsearch=";
-        let buscar = req.body.queryResult.queryText.split("Wiki RPyL ");
+        let buscar = req.body.queryResult.queryText.split("/Wiki RPyL /gi");
       //this.respuesta = ;
         fetch(wikiapi+buscar[1]).then(res => res.json()) // expecting a json response
       .then(json => {
