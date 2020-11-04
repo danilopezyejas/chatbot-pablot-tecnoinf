@@ -36,8 +36,8 @@ router.post('/contexto', (req,res)=>{
     switch (acction) {
       case "Wiki RPyL":
         
-        console.log(req.body.queryResult);
-        this.respuesta = req.body.queryResult;
+        
+        this.respuesta = req.body.queryResult.queryText.split("Wiki RPyL");;
       break;
       case "Materias primer semestre":
       //Si el usuario quere saber a que materias se puede anotar de un semestre distindo al primero
