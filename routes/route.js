@@ -46,7 +46,7 @@ router.post('/contexto', (req,res)=>{
         }else{
           devolver= "He encontrado esto: <br>"
           for(let i=0; i< json.query.search.length;i++){
-            devolver+= json.query.search[i].title+": <a>http://wiki-rpl-tipy.jesusguibert.com/mediawiki/index.php/"+json.query.search[i].title+"</a><br>";
+            devolver+= json.query.search[i].title+": http://wiki-rpl-tipy.jesusguibert.com/mediawiki/index.php/"+json.query.search[i].title + "|";
           }
         }
         this.respuesta = devolver;
