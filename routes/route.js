@@ -37,7 +37,7 @@ router.post('/contexto', (req,res)=>{
       case "Wiki RPyL":
         let wikiapi = "http://wiki-rpl-tipy.jesusguibert.com/mediawiki/api.php?action=query&list=search&srwhat=text&srsearch=";
         let buscar = req.body.queryResult.queryText.split("Wiki RPyL ");;
-        fetch(wikiapi+buscar).then(res => res.json()) // expecting a json response
+        fetch(wikiapi+buscar[1]).then(res => res.json()) // expecting a json response
       .then(json => this.respuesta = json );
       break;
       case "Materias primer semestre":
