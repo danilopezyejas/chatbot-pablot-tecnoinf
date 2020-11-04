@@ -35,9 +35,10 @@ router.post('/contexto', (req,res)=>{
   }else {
     switch (acction) {
       case "Wiki RPyL":
-        
-        
-        this.respuesta = req.body.queryResult.queryText.split("Wiki RPyL");;
+        let wikiapi = "http://wiki-rpl-tipy.jesusguibert.com/mediawiki/api.php?action=query&list=search&srwhat=text&srsearch=";
+        let buscar = req.body.queryResult.queryText.split("Wiki RPyL ");;
+        fetch(wikiapi+buscar).then(res => res.json()) // expecting a json response
+      .then(json => this.respuesta = json );
       break;
       case "Materias primer semestre":
       //Si el usuario quere saber a que materias se puede anotar de un semestre distindo al primero
