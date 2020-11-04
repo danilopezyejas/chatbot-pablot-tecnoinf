@@ -38,8 +38,8 @@ router.post('/contexto', (req,res)=>{
         let wikiapi = "http://wiki-rpl-tipy.jesusguibert.com/mediawiki/api.php?action=query&list=search&srwhat=text&srsearch=";
         let buscar = req.body.queryResult.queryText.split("Wiki RPyL ");
       this.respuesta = wikiapi+buscar[1];
-        /*fetch(wikiapi+buscar[1]).then(res => res.json()) // expecting a json response
-      .then(json => this.respuesta = JSON.stringify(json));*/
+        fetch(wikiapi+buscar[1]).then(res => res.json()) // expecting a json response
+      .then(json => this.respuesta = JSON.stringify(json));
       break;
       case "Materias primer semestre":
       //Si el usuario quere saber a que materias se puede anotar de un semestre distindo al primero
