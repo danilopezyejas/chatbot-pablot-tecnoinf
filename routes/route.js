@@ -35,11 +35,22 @@ router.post('/contexto', (req,res)=>{
   }else {
     switch (acction) {
       case "Wiki RPyL":
-        let wikiapi = "http://wiki-rpl-tipy.jesusguibert.com/mediawiki/api.php?action=query&list=search&srwhat=text&srsearch=";
+        let wikiapi = "http://wiki-rpl-tipy.jesusguibert.com/mediawiki/api.php?action=query&list=search&srwhat=text&format=json&srsearch=";
         let buscar = req.body.queryResult.queryText.split("Wiki RPyL ");
-      //this.respuesta = wikiapi+buscar[1];
-        fetch("https://dog.ceo/api/breeds/image/random").then(res => res.json()) // expecting a json response
-      .then(json => this.respuesta = json.status);
+      //this.respuesta = ;
+        fetch(wikiapi+buscar[1]).then(res => res.json()) // expecting a json response
+      .then(json => {
+        let devolver = "";
+        if(json.query.search.length == 0){
+          devolver = "No se han encontrado resultados en la wiki";
+        }else{
+          devolver= "He encontrado esto: <br>"
+          for(let i=0; i< json.query.search.length;i++){
+            devolver+= json.query.search[i].title+": <a>http://wiki-rpl-tipy.jesusguibert.com/mediawiki/index.php/"+json.query.search[i].title+"</a><br>";
+          }
+        }
+        this.respuesta = devolver;
+      });
       break;
       case "Materias primer semestre":
       //Si el usuario quere saber a que materias se puede anotar de un semestre distindo al primero
