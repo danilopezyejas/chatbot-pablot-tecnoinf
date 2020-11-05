@@ -21,7 +21,7 @@ module.exports = {
       // Aquí creamos una nueva frase de entrenamiento para cada parte proporcionada.
       let trainingPhrase = {
         type: 'EXAMPLE',
-        parts: [part]
+        parts: {text:pregunta}
       };
       trainingPhrases.push(trainingPhrase);
     });
