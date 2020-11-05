@@ -14,12 +14,12 @@ module.exports = {
     respuesta = [respuesta];
     // console.log(preguntas);
     preguntas.forEach(pregunta => {
-      const part = {
+      let part = {
         text: pregunta
       };
 
       // Aquí creamos una nueva frase de entrenamiento para cada parte proporcionada.
-      const trainingPhrase = {
+      let trainingPhrase = {
         type: 'EXAMPLE',
         parts: [part]
       };
