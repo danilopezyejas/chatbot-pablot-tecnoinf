@@ -13,18 +13,21 @@ module.exports = {
     preguntas = [preguntas];
     respuesta = [respuesta];
     // console.log(preguntas);
-    preguntas.forEach(pregunta => {
-      const part = {
-        text: pregunta,
+   // preguntas.forEach(pregunta => {
+     for(let i=0;i<preguntas.lenght;i++){
+      let part = {
+        text: preguntas[i]
       };
 
       // Aquí creamos una nueva frase de entrenamiento para cada parte proporcionada.
-      const trainingPhrase = {
+      let trainingPhrase = {
         type: 'EXAMPLE',
-        parts: [part],
+        parts: [part]
       };
       trainingPhrases.push(trainingPhrase);
-    });
+     }
+   
+    //});
     const messageText = {
       text: respuesta,
     };
