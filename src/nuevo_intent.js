@@ -10,7 +10,7 @@ module.exports = {
     // La ruta para identificar al agente que posee la intención creada.
     const agentPath = intentsClient.agentPath(projectId);
     const trainingPhrases = [];
-    preguntas = [preguntas];
+   // preguntas = [preguntas];
     respuesta = [respuesta];
     // console.log(preguntas);
    // preguntas.forEach(pregunta => {
