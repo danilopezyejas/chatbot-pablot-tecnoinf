@@ -7,7 +7,7 @@ const crear_intent = require('../src/nuevo_intent');
 const borrar_intent = require('../src/borrar_intent');
 const fetch = require('node-fetch');
 const ChatbotId = "chatbot-pablot-290222";
-const ServidorDiego = 'http://3e64e7c9f20c.ngrok.io/';
+const ServidorDiego = 'https://chatbot-tip-backend.herokuapp.com/';
 
 let usuarioPregunton = 0;
 let respuesta = "";
