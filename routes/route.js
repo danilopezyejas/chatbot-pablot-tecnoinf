@@ -10,6 +10,7 @@ const ChatbotId = "chatbot-pablot-290222";
 const ServidorDiego = 'https://chatbot-tip-backend.herokuapp.com/';
 
 let usuarioPregunton = 0;
+let codigo = "";
 let respuesta = "";
 
 router.get('/', (req,res)=>{
@@ -108,7 +109,7 @@ router.post('/contexto', (req,res)=>{
         case "Clases hoy":
           fetch(ServidorDiego + 'preguntas/FAQcal7',{
             method: 'POST',
-            body: {},
+            body: {id: usuarioPregunton,codigo:codigo },
             headers: { 'Content-Type': 'application/json' }
     })
       .then(res => res.json()) // expecting a json response
@@ -117,7 +118,7 @@ router.post('/contexto', (req,res)=>{
         case "Clases mañana":
           fetch(ServidorDiego + 'preguntas/FAQcal5',{
             method: 'POST',
-            body: {},
+            body: {id: usuarioPregunton,codigo},
             headers: { 'Content-Type': 'application/json' }
     })
       .then(res => res.json()) // expecting a json response
@@ -133,6 +134,7 @@ router.post('/contexto', (req,res)=>{
 
 router.post('/send-msg', (req,res)=>{
   usuarioPregunton = req.body.id;
+  codigo = req.body.codigo;
   consultar_intent.buscar_intent(ChatbotId, req.body.MSG)
     .then((results) => {
       res.send({Reply: results})
