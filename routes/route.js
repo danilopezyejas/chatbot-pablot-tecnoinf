@@ -96,6 +96,33 @@ router.post('/contexto', (req,res)=>{
           .then(res => res.json()) // expecting a json response
           .then(json => this.respuesta = json.Reply );
         break;
+        case "Proyecto Final":
+          fetch(ServidorDiego + 'preguntas/FAQcal4',{
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers: { 'Content-Type': 'application/json' }
+    })
+      .then(res => res.json()) // expecting a json response
+      .then(json => this.respuesta = json.Reply );
+        break;
+        case "Clases hoy":
+          fetch(ServidorDiego + 'preguntas/FAQcal7',{
+            method: 'POST',
+            body: {},
+            headers: { 'Content-Type': 'application/json' }
+    })
+      .then(res => res.json()) // expecting a json response
+      .then(json => this.respuesta = json.Reply );
+        break;
+        case "Clases mañana":
+          fetch(ServidorDiego + 'preguntas/FAQcal5',{
+            method: 'POST',
+            body: {},
+            headers: { 'Content-Type': 'application/json' }
+    })
+      .then(res => res.json()) // expecting a json response
+      .then(json => this.respuesta = json.Reply );
+        break;
       default:
         console.log("ERROR POST");
         this.respuesta = 'A ocurido un error! No se encontro lo solicitado';
