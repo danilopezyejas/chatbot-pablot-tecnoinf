@@ -47,7 +47,7 @@ router.post('/contexto', (req,res)=>{
         }else{
           devolver= "He encontrado esto: <br>"
           for(let i=0; i< json.query.search.length;i++){
-            devolver+= json.query.search[i].title+": <a href='http://wiki-rpl-tipy.jesusguibert.com/mediawiki/index.php/"+json.query.search[i].title +"'>Ver más<a>  <br>";
+            devolver+= json.query.search[i].title+": <a target='_blank' href='http://wiki-rpl-tipy.jesusguibert.com/mediawiki/index.php/"+json.query.search[i].title +"'>Ver más<a>  <br>";
           }
         }
         this.respuesta = devolver;
@@ -108,7 +108,7 @@ router.post('/contexto', (req,res)=>{
         case "Clases hoy":
           fetch(ServidorDiego + 'preguntas/FAQcal7',{
             method: 'POST',
-            body: {},
+            body: JSON.stringify(body),
             headers: { 'Content-Type': 'application/json' }
     })
       .then(res => res.json()) // expecting a json response
@@ -117,7 +117,7 @@ router.post('/contexto', (req,res)=>{
         case "Clases mañana":
           fetch(ServidorDiego + 'preguntas/FAQcal5',{
             method: 'POST',
-            body: {},
+            body: JSON.stringify(body),
             headers: { 'Content-Type': 'application/json' }
     })
       .then(res => res.json()) // expecting a json response
